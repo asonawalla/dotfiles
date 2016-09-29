@@ -43,7 +43,7 @@ Bundle 'dgryski/vim-godef'
 	let g:godef_split=3
 
 " For sql stuff
-Plugin 'vim-scripts/dbext.vim'
+Plugin 'vim-scripts/SQLComplete.vim'
 
 " Protocol Buffers
 Plugin 'uarun/vim-protobuf'
