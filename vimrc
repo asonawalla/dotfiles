@@ -5,11 +5,7 @@ set background=dark
 set tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
 set t_Co=256 " needed for airline support
 highlight Normal ctermfg=grey ctermbg=black
-
-" Pathogen settings
-execute pathogen#infect()
 syntax on
-filetype plugin indent on
 
 " Vundle settings
 set nocompatible              " be iMproved, required
