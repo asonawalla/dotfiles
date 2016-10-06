@@ -39,7 +39,8 @@ Bundle 'dgryski/vim-godef'
 	let g:godef_split=3
 
 " For sql stuff
-Plugin 'vim-scripts/SQLComplete.vim'
+Plugin 'exu/pgsql.vim'
+  let g:sql_type_default = 'pgsql'
 
 " Protocol Buffers
 Plugin 'uarun/vim-protobuf'
