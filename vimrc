@@ -7,6 +7,12 @@ set t_Co=256 " needed for airline support
 highlight Normal ctermfg=grey ctermbg=black
 syntax on
 
+" If vim's launched from a fish shell, shit gets weird.
+" Set the shell to sh if launched from fish.
+if &shell =~# 'fish$'
+  set shell=sh
+endif
+
 " Vundle settings
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -39,8 +45,8 @@ Bundle 'dgryski/vim-godef'
 	let g:godef_split=3
 
 " For sql stuff
-Plugin 'exu/pgsql.vim'
-  let g:sql_type_default = 'pgsql'
+" Plugin 'exu/pgsql.vim'
+"   let g:sql_type_default = 'pgsql'
 
 " Protocol Buffers
 Plugin 'uarun/vim-protobuf'
@@ -60,6 +66,9 @@ Plugin 'vim-airline/vim-airline-themes'
 
 " Highlight stupid whitespace
 Plugin 'ntpeters/vim-better-whitespace'
+
+" fish scripts syntax highlighting
+Plugin 'dag/vim-fish'
 
 " Dim inactive windows
 " Plugin 'blueyed/vim-diminactive'
