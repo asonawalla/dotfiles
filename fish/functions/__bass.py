@@ -1,0 +1,1 @@
+/home/azim/.config/fisherman/bass/functions/__bass.py
