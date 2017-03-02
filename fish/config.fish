@@ -36,3 +36,5 @@ alias context='kubectl config current-context'
 set -x NVM_DIR "/home/azim/.nvm"
 bass source "$NVM_DIR/nvm.sh"  # This loads nvm
 
+# the fuck
+eval thefuck --alias
