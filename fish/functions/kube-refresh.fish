@@ -21,7 +21,7 @@ function kube-refresh
   echo -n "."
 
   # Special case: EtcdV3 is translated to ETCDCTL_ENDPOINTS.
-  set -gx ETCDCTL_ENDPOINTS $ETCD_SERVICE_HOST:$ETCD_SERVICE_PORT
+  set -gx ETCDCTL_ENDPOINTS http://$ETCD_SERVICE_HOST:$ETCD_SERVICE_PORT
 
   echo "Done."
 end
