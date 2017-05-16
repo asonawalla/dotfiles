@@ -3,12 +3,6 @@ set -x GOROOT /usr/local/go
 set -x GOPATH $HOME/workspace
 set -x PATH $PATH $GOROOT/bin $GOPATH/bin
 
-# hadoop binary setup
-set -x JAVA_HOME (update-alternatives --list java | tail -1 | sed -E 's/\/bin\/java//')
-set -x CLASSPATH $HOME/java
-set -x PATH $PATH $JAVA_HOME/bin $HOME/hadoop/bin $HOME/hadoop/sbin
-
-
 # add gcloud sdk stuff to the path
 set -x PATH $PATH $HOME/google-cloud-sdk/bin
 
@@ -31,8 +25,9 @@ alias gsync='git submodule sync; and git submodule update --init --recursive'
 alias local='kubectl config use-context local'
 alias production='kubectl config use-context production'
 alias context='kubectl config current-context'
+alias cycle-postgres='kubectl get pod -l app=postgresql -o json | jq -r .items[0].metadata.name | xargs -n 1 kubectl delete pod'
 
 # node version manager
-set -x NVM_DIR "/home/azim/.nvm"
-bass source "$NVM_DIR/nvm.sh"  # This loads nvm
+# set -x NVM_DIR "/home/azim/.nvm"
+# bass source "$NVM_DIR/nvm.sh"  # This loads nvm
 
