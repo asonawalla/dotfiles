@@ -31,6 +31,9 @@ Plug 'scrooloose/nerdtree'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
+" OSX specific, but shouldn't hurt on Linux
+Plug 'bradens/vim-iterm2-navigator'
+
 call plug#end()
 
 syntax enable
