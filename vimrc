@@ -11,7 +11,6 @@ call plug#begin('~/.vim/plugged')
 
 " Language tools
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
-  let g:go_auto_sameids=1
   let g:go_fmt_command="goimports"
 
 Plug 'uarun/vim-protobuf'
