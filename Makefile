@@ -14,5 +14,6 @@ vim-plug:
 		     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 vim: vim-plug
-	@cp vimrc $(HOME)/.vimrc
+	@ln -s $(CURDIR)/vimrc $(HOME)/.vimrc
 	@vim +PlugInstall +qall
+
