@@ -1,11 +1,5 @@
-" Personal settings
-set mouse=a
-set nowrap
-set background=dark
-set tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
-set t_Co=256 " needed for airline support
-highlight Normal ctermfg=grey ctermbg=black
-syntax on
+set nocompatible
+filetype off
 
 " If vim's launched from a fish shell, shit gets weird.
 " Set the shell to sh if launched from fish.
@@ -13,83 +7,48 @@ if &shell =~# 'fish$'
   set shell=sh
 endif
 
-" Vundle settings
-set nocompatible              " be iMproved, required
-filetype off                  " required
+call plug#begin('~/.vim/plugged')
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-
-" vim-go
-Plugin 'fatih/vim-go'
+" Language tools
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
   let g:go_auto_sameids=1
   let g:go_fmt_command="goimports"
 
-" You Complete Me
-Plugin 'Valloric/YouCompleteMe'
+Plug 'uarun/vim-protobuf'
 
-" Highlight closing XML/HTML tags
-Plugin 'Valloric/MatchTagAlways'
+Plug 'ekalinin/Dockerfile.vim'
 
-" ctrlp = fuzzy file finder
-Plugin 'ctrlpvim/ctrlp.vim'
+Plug 'editorconfig/editorconfig-vim'
 
-" GoDef
-Bundle 'dgryski/vim-godef'
-	let g:godef_split=3
+Plug 'dag/vim-fish'
 
-" For sql stuff
-" Plugin 'exu/pgsql.vim'
-"   let g:sql_type_default = 'pgsql'
+" VCS Tools
+Plug 'tpope/vim-fugitive'
 
-" Protocol Buffers
-Plugin 'uarun/vim-protobuf'
+" Other vim enhancement plugins
+Plug 'scrooloose/nerdtree'
+" Plug 'Valloric/YouCompleteMe', { 'do': './install.py --gocode-completer' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
-" VCS
-Plugin 'tpope/vim-fugitive'
+call plug#end()
 
-" Better tree display
-Plugin 'scrooloose/nerdtree'
+syntax enable
+set t_Co=256
+set background=dark
+colorscheme desert
 
-" Lightweight powerline alternative
-Plugin 'vim-airline/vim-airline'
-  let g:airline#extensions#tabline#enabled = 1
-  let g:airline_powerline_fonts = 1
-  let g:airline_theme='simple'
-Plugin 'vim-airline/vim-airline-themes'
+set mouse=a
+set number
+set hlsearch
+set incsearch
+set ruler
+set nobackup
+set noswapfile
+set tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
 
-" Highlight stupid whitespace
-Plugin 'ntpeters/vim-better-whitespace'
+set completeopt=longest,menuone,preview
 
-" fish scripts syntax highlighting
-Plugin 'dag/vim-fish'
-
-" Dim inactive windows
-" Plugin 'blueyed/vim-diminactive'
-
-" All of your (Vundle) Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-
-" Because I can't type for shit
-command W w
-command Q q
-
-" Configuration for vim-diminactive
-" let g:diminactive_use_colorcolumn = 0
-" let g:diminactive_use_syntax = 1
-" let g:diminactive = 1
-
-" Underline stuff in the active window
-" augroup ActiveWindowUnderline
-"   autocmd!
-"   autocmd WinEnter * set cul
-"   autocmd WinLeave * set nocul
-" augroup END
+highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
+match ExtraWhitespace /\s\+$/
 
