@@ -17,3 +17,6 @@ vim: vim-plug
 	@ln -s $(CURDIR)/vimrc $(HOME)/.vimrc
 	@vim +PlugInstall +qall
 
+brew:
+	curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install | /usr/bin/ruby
+
