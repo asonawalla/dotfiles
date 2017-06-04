@@ -41,7 +41,6 @@ set background=dark
 colorscheme desert
 
 set mouse=a
-set number
 set hlsearch
 set incsearch
 set ruler
@@ -51,6 +50,11 @@ set tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
 
 set completeopt=longest,menuone,preview
 
+" Show line numbers and make them grey
+set number
+highlight LineNr ctermfg=grey guifg=grey
+
+" Highlight extra whitespace at the end of lines
 highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
 match ExtraWhitespace /\s\+$/
 
