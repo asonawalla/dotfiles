@@ -59,3 +59,6 @@ highlight LineNr ctermfg=grey guifg=grey
 highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
 match ExtraWhitespace /\s\+$/
 
+" Shortcut for NERDTree
+map <C-n> :NERDTreeToggle<CR>
+
