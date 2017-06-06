@@ -38,9 +38,12 @@ $(HOME)/vim:
 /usr/local/bin/brew:
 	curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install | /usr/bin/ruby
 
-clean: clean-vim
+clean: clean-vim clean-vim-config
 
 clean-vim:
+	(cd $(HOME)/vim && sudo make uninstall && make clean)
+
+clean-vim-config:
 	sudo rm -r $(HOME)/.vim || true
 	rm $(HOME)/.vimrc || true
 
