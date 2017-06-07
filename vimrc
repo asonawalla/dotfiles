@@ -51,6 +51,9 @@ set tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
 
 set completeopt=longest,menuone,preview
 
+" Allow backspacing over everything in insert mode
+set backspace=indent,eol,start
+
 " Show line numbers and make them grey
 set number
 highlight LineNr ctermfg=grey guifg=grey
