@@ -48,11 +48,9 @@ set ruler
 set nobackup
 set noswapfile
 set tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
+set backspace=indent,eol,start
 
 set completeopt=longest,menuone,preview
-
-" Allow backspacing over everything in insert mode
-set backspace=indent,eol,start
 
 " Show line numbers and make them grey
 set number
@@ -64,4 +62,7 @@ match ExtraWhitespace /\s\+$/
 
 " Shortcut for NERDTree
 map <C-n> :NERDTreeToggle<CR>
+
+" Avoid the conflict on c-c in sql files
+let g:omni_sql_no_default_maps=1
 
