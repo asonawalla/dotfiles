@@ -73,7 +73,7 @@ end
 
 function __kubectl_no_pod
     set cmd (commandline -pc)
-    for i in (__kubectl_pods --no-prefix pods)
+    for i in (__kubectl_pods_completion --no-prefix pods)
         if string match -q "*$i*" -- $cmd
             return 1
         end
