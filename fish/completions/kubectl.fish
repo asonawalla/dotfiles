@@ -3,6 +3,14 @@
 # deployment, maintenance, and scaling of applications.
 # See: https://kubernetes.io
 
+function __kubectl_namespace
+    #TODO(azim): get these to work if possible, but for now just return default
+    # set cmd (commandline -pc)
+    # set namespace (string replace -r '^kubectl .*(-n |--namespace[= ]?)([^ ]*) .*$' '$2' -- $cmd)
+
+    echo default
+end
+
 function __kubectl_no_command
     set -l cmd (commandline -poc)
     if not set -q cmd[2]
@@ -208,8 +216,7 @@ function __kubectl_containers
 end
 
 function __kubectl_pods_completion
-    set cmd (commandline -pc)
-    set namespace (string replace -r '^kubectl .*(-n |--namespace[= ]?)([^ ]*) .*$' '$2' -- $cmd)
+    set namespace (__kubectl_namespace)
 
     kubectl get pods -n "$namespace" ^/dev/null | tail -n +2 | awk '{print $1"\tPod "$2" "$3}'
 end
