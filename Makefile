@@ -1,13 +1,13 @@
 #!/usr/bin/env make -f
 
-all:
+all: vim fish
 
 vim: /usr/local/bin/vim $(HOME)/.vim/autoload/plug.vim
-	@vim +PlugInstall +qall
 
 $(HOME)/.vim/autoload/plug.vim: $(HOME)/.vimrc
 	curl -fLo $(HOME)/.vim/autoload/plug.vim --create-dirs \
 		     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	@vim +PlugInstall +qall
 
 $(HOME)/.vimrc:
 	@ln -s $(CURDIR)/vimrc $(HOME)/.vimrc
