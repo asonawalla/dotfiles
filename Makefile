@@ -9,6 +9,8 @@ $(HOME)/.vim/autoload/plug.vim: $(HOME)/.vimrc
 		     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	@vim +PlugInstall +qall
 
+vim-config: $(HOME)/.vim/autoload/plug.vim
+
 $(HOME)/.vimrc:
 	@ln -s $(CURDIR)/vimrc $(HOME)/.vimrc
 
