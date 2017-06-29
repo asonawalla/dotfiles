@@ -21,6 +21,8 @@ Plug 'editorconfig/editorconfig-vim'
 
 Plug 'dag/vim-fish'
 
+Plug 'solarnz/thrift.vim'
+
 " VCS Tools
 Plug 'tpope/vim-fugitive'
 
