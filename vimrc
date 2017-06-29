@@ -28,6 +28,7 @@ Plug 'tpope/vim-fugitive'
 
 " Other vim enhancement plugins
 Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdcommenter'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --gocode-completer' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
