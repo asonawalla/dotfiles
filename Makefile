@@ -11,7 +11,7 @@ $(HOME)/.vim/autoload/plug.vim: $(HOME)/.vimrc
 
 vim-config: $(HOME)/.vim/autoload/plug.vim
 
-$(HOME)/.vimrc:
+$(HOME)/.vimrc: $(CURDIR)/vimrc
 	@ln -s $(CURDIR)/vimrc $(HOME)/.vimrc
 
 /usr/local/bin/vim: $(HOME)/vim
