@@ -46,8 +46,10 @@ FISH_CONFIG_ROOT := $(HOME)/.config/fish
 
 fish: $(FISH_CONFIG_ROOT)/config.fish fish-functions fish-completions
 
-fish-functions:
-	#TODO: all of these
+fish-functions: $(HOME)/.config/fish/functions/fisher.fish
+
+$(HOME)/.config/fish/functions/fisher.fish:
+	curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
 
 fish-completions: $(FISH_CONFIG_ROOT)/completions/kubectl.fish
 
