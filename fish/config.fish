@@ -31,10 +31,8 @@ command -v vg >/dev/null 2>&1; and vg eval --shell fish | source
 # All the conditional os stuff should go here
 switch (uname)
     case Linux
-            echo Using linux config
+            # Nothing to see here
     case Darwin
-            echo Using mac config!
-
 						# use gnu coreutils by default (os x  only)
 						set -x PATH /usr/local/opt/coreutils/libexec/gnubin $PATH
 
