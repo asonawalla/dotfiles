@@ -56,7 +56,7 @@ $(FISH_CONFIG_ROOT)/completions/kubectl.fish:
 	ln -s $(CURDIR)/fish/completions/kubectl.fish $(FISH_CONFIG_ROOT)/completions/kubectl.fish
 
 $(FISH_CONFIG_ROOT)/config.fish:
-	ln -s $(CURDIR)/fish $(HOME)/.config/fish/config.fish
+	ln -s $(CURDIR)/fish/config.fish $(HOME)/.config/fish/config.fish
 
 clean: clean-vim clean-vim-config
 
