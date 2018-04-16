@@ -1,24 +1,15 @@
 # go environment setup
 set -x GOROOT /usr/local/go
-set -x GOPATH $HOME/workspace
+set -x GOPATH $HOME/go
 set -x PATH $PATH $GOROOT/bin $GOPATH/bin
 
 # add google cloud sdk bin to the path
 set -x PATH $PATH $HOME/google-cloud-sdk/bin
 
-# use gnu coreutils by default (os x  only)
-set -x PATH /usr/local/opt/coreutils/libexec/gnubin $PATH
-
 # additional go build flags for mac os x. this works with the
 # brew install'd version of rocksdb. presumably.
 # set -x CGO_CPPFLAGS "-I/usr/local/include"
 # set -x CGO_LDFLAGS "-L'/usr/local/lib'"
-
-# these cgo flags point rocksdb to the local installation.
-set rdb '/Users/asonaw/workspace/src/github.com/facebook/rocksdb'
-set -x CGO_CFLAGS '-I'$rdb'/include'
-set -x CGO_LDFLAGS '-L'$rdb' -lrocksdb -lstdc++ -lm -lz -lbz2 -lsnappy'
-set -x CPATH $rdb'/include'
 
 # easy way to update submodules
 alias gsync='git submodule sync; and git submodule update --init --recursive'
@@ -36,3 +27,22 @@ set -g fish_user_paths "/usr/local/opt/bison@2.7/bin" $fish_user_paths
 
 # vg auto setup
 command -v vg >/dev/null 2>&1; and vg eval --shell fish | source
+
+# All the conditional os stuff should go here
+switch (uname)
+    case Linux
+            echo Using linux config
+    case Darwin
+            echo Using mac config!
+
+						# use gnu coreutils by default (os x  only)
+						set -x PATH /usr/local/opt/coreutils/libexec/gnubin $PATH
+
+						# these cgo flags point rocksdb to the local installation.
+						set rdb '/Users/asonaw/workspace/src/github.com/facebook/rocksdb'
+						set -x CGO_CFLAGS '-I'$rdb'/include'
+						set -x CGO_LDFLAGS '-L'$rdb' -lrocksdb -lstdc++ -lm -lz -lbz2 -lsnappy'
+						set -x CPATH $rdb'/include'
+    case '*'
+            echo ERROR: OS not detected.
+end
