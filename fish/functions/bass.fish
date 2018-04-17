@@ -1,1 +1,0 @@
-/home/azim/.config/fisherman/bass/functions/bass.fish
