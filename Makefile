@@ -64,23 +64,11 @@ $(HOME)/.tmux.conf:
 POWERLINE_DIR=$(HOME)/powerline
 POWERLINE_FONTS_DIR=$(HOME)/powerline_fonts
 
-powerline: /usr/local/bin/powerline-config /usr/local/bin/powerline-daemon /usr/local/bin/powerline-lint /usr/local/bin/powerline-render $(POWERLINE_DIR) $(POWERLINE_FONTS_DIR)
-
-/usr/local/bin/powerline-config: $(POWERLINE_DIR)
-	ln -s $(POWERLINE_DIR)/scripts/powerline-config /usr/local/bin/
-
-/usr/local/bin/powerline-daemon: $(POWERLINE_DIR)
-	ln -s $(POWERLINE_DIR)/scripts/powerline-daemon /usr/local/bin/
-
-/usr/local/bin/powerline-lint: $(POWERLINE_DIR)
-	ln -s $(POWERLINE_DIR)/scripts/powerline-lint /usr/local/bin/
-
-/usr/local/bin/powerline-render: $(POWERLINE_DIR)
-	ln -s $(POWERLINE_DIR)/scripts/powerline-render /usr/local/bin/
+powerline: $(POWERLINE_DIR) $(POWERLINE_FONTS_DIR)
 
 $(POWERLINE_DIR):
 	mkdir -p $(POWERLINE_DIR)
-	(git clone https://github.com/asonawalla/powerline.git $(POWERLINE_DIR) && cd $(POWERLINE_DIR) && git checkout azim)
+	(git clone https://github.com/asonawalla/powerline.git $(POWERLINE_DIR) && cd $(POWERLINE_DIR) && git checkout azim && python setup.py develop)
 
 $(POWERLINE_FONTS_DIR):
 	mkdir -p $(POWERLINE_FONTS_DIR)
