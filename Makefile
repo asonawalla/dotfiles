@@ -53,6 +53,14 @@ tmux: $(HOME)/.tmux.conf
 $(HOME)/.tmux.conf:
 	ln -s $(CURDIR)/tmux.conf $(HOME)/.tmux.conf
 
+POWERLINE_DIR=$(HOME)/powerline
+
+powerline: $(POWERLINE_DIR)
+
+$(POWERLINE_DIR):
+	mkdir -p $(POWERLINE_DIR)
+	(git clone https://github.com/asonawalla/powerline.git $(POWERLINE_DIR) && cd $(POWERLINE_DIR) && git checkout azim)
+
 ## ALL THE FISH STUFF
 
 FISH_CONFIG_ROOT := $(HOME)/.config/fish
@@ -75,7 +83,7 @@ $(FISH_CONFIG_ROOT)/config.fish:
 
 ## ALL THE CLEAN STUFF
 
-clean: clean-vim clean-vim-config
+clean: clean-vim clean-vim-config clean-tmux clean-powerline
 
 clean-vim:
 	(cd $(HOME)/vim && sudo make uninstall && make clean)
@@ -83,4 +91,10 @@ clean-vim:
 clean-vim-config:
 	sudo rm -r $(HOME)/.vim || true
 	rm $(HOME)/.vimrc || true
+
+clean-powerline:
+	sudo rm -r $(POWERLINE_DIR) || true
+
+clean-tmux:
+	rm $(HOME)/.tmux.conf
 
