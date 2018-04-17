@@ -1,6 +1,6 @@
 #!/usr/bin/env make -f
 
-all: vim fish
+all: vim fish powerline tmux
 
 ## ALL THE VIM STUFF
 
