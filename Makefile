@@ -54,12 +54,18 @@ $(HOME)/.tmux.conf:
 	ln -s $(CURDIR)/tmux.conf $(HOME)/.tmux.conf
 
 POWERLINE_DIR=$(HOME)/powerline
+POWERLINE_FONTS_DIR=$(HOME)/powerline_fonts
 
-powerline: $(POWERLINE_DIR)
+powerline: $(POWERLINE_DIR) $(POWERLINE_FONTS_DIR)
 
 $(POWERLINE_DIR):
 	mkdir -p $(POWERLINE_DIR)
 	(git clone https://github.com/asonawalla/powerline.git $(POWERLINE_DIR) && cd $(POWERLINE_DIR) && git checkout azim)
+
+$(POWERLINE_FONTS_DIR):
+	mkdir -p $(POWERLINE_FONTS_DIR)
+	git clone https://github.com/powerline/fonts.git $(POWERLINE_FONTS_DIR)
+	$(POWERLINE_FONTS_DIR)/install.sh
 
 ## ALL THE FISH STUFF
 
@@ -83,7 +89,7 @@ $(FISH_CONFIG_ROOT)/config.fish:
 
 ## ALL THE CLEAN STUFF
 
-clean: clean-vim clean-vim-config clean-tmux clean-powerline
+clean: clean-vim clean-vim-config clean-tmux clean-powerline clean-powerline-fonts
 
 clean-vim:
 	(cd $(HOME)/vim && sudo make uninstall && make clean)
@@ -94,6 +100,10 @@ clean-vim-config:
 
 clean-powerline:
 	sudo rm -r $(POWERLINE_DIR) || true
+
+clean-powerline-fonts:
+	$(POWERLINE_FONTS_DIR)/uninstall.sh || true
+	sudo rm -r $(POWERLINE_FONTS_DIR) || true
 
 clean-tmux:
 	rm $(HOME)/.tmux.conf
