@@ -64,7 +64,19 @@ $(HOME)/.tmux.conf:
 POWERLINE_DIR=$(HOME)/powerline
 POWERLINE_FONTS_DIR=$(HOME)/powerline_fonts
 
-powerline: $(POWERLINE_DIR) $(POWERLINE_FONTS_DIR)
+powerline: /usr/local/bin/powerline-config /usr/local/bin/powerline-daemon /usr/local/bin/powerline-lint /usr/local/bin/powerline-render $(POWERLINE_DIR) $(POWERLINE_FONTS_DIR)
+
+/usr/local/bin/powerline-config: $(POWERLINE_DIR)
+	ln -s $(POWERLINE_DIR)/scripts/powerline-config /usr/local/bin/
+
+/usr/local/bin/powerline-daemon: $(POWERLINE_DIR)
+	ln -s $(POWERLINE_DIR)/scripts/powerline-daemon /usr/local/bin/
+
+/usr/local/bin/powerline-lint: $(POWERLINE_DIR)
+	ln -s $(POWERLINE_DIR)/scripts/powerline-lint /usr/local/bin/
+
+/usr/local/bin/powerline-render: $(POWERLINE_DIR)
+	ln -s $(POWERLINE_DIR)/scripts/powerline-render /usr/local/bin/
 
 $(POWERLINE_DIR):
 	mkdir -p $(POWERLINE_DIR)
@@ -108,13 +120,14 @@ clean-vim-config:
 
 clean-powerline:
 	sudo rm -r $(POWERLINE_DIR) || true
+	sudo rm /usr/local/bin/powerline* || true
 
 clean-powerline-fonts:
-	$(POWERLINE_FONTS_DIR)/uninstall.sh || true
+	sudo $(POWERLINE_FONTS_DIR)/uninstall.sh || true
 	sudo rm -r $(POWERLINE_FONTS_DIR) || true
 
 clean-tmux:
-	rm /usr/local/bin/tmux || true
+	sudo rm /usr/local/bin/tmux || true
 	rm $(HOME)/.tmux.conf || true
 	sudo rm -r $(HOME)/tmux || true
 
