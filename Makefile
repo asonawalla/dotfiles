@@ -2,6 +2,8 @@
 
 all: vim fish
 
+## ALL THE VIM STUFF
+
 vim: /usr/local/bin/vim $(HOME)/.vim/autoload/plug.vim
 
 $(HOME)/.vim/autoload/plug.vim: $(HOME)/.vimrc
@@ -31,6 +33,8 @@ $(HOME)/.vimrc: $(CURDIR)/vimrc
 $(HOME)/vim:
 	git clone https://github.com/vim/vim $(HOME)/vim
 
+## ALL THE PYTHON STUFF
+
 /usr/local/bin/python3: /usr/local/bin/brew
 	#TODO: make this work on linux
 	brew install python3 --verbose
@@ -41,6 +45,15 @@ $(HOME)/vim:
 
 /usr/local/bin/brew:
 	curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install | /usr/bin/ruby
+
+## ALL THE TMUX STUFF
+
+tmux: $(HOME)/.tmux.conf
+
+$(HOME)/.tmux.conf:
+	ln -s $(CURDIR)/tmux.conf $(HOME)/.tmux.conf
+
+## ALL THE FISH STUFF
 
 FISH_CONFIG_ROOT := $(HOME)/.config/fish
 
@@ -59,6 +72,8 @@ $(FISH_CONFIG_ROOT)/completions/kubectl.fish:
 
 $(FISH_CONFIG_ROOT)/config.fish:
 	ln -s $(CURDIR)/fish/config.fish $(HOME)/.config/fish/config.fish
+
+## ALL THE CLEAN STUFF
 
 clean: clean-vim clean-vim-config
 
