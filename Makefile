@@ -48,7 +48,15 @@ $(HOME)/vim:
 
 ## ALL THE TMUX STUFF
 
-tmux: $(HOME)/.tmux.conf
+tmux: $(HOME)/.tmux.conf /usr/local/bin/tmux
+
+$(HOME)/tmux:
+	mkdir -p $(HOME)/tmux
+	git clone https://github.com/tmux/tmux.git $(HOME)/tmux
+
+/usr/local/bin/tmux: $(HOME)/tmux
+	(cd $(HOME)/tmux && git checkout 2.7)
+	(cd $(HOME)/tmux/ && ./autogen.sh && ./configure && make && sudo make install)
 
 $(HOME)/.tmux.conf:
 	ln -s $(CURDIR)/tmux.conf $(HOME)/.tmux.conf
@@ -106,5 +114,7 @@ clean-powerline-fonts:
 	sudo rm -r $(POWERLINE_FONTS_DIR) || true
 
 clean-tmux:
-	rm $(HOME)/.tmux.conf
+	rm /usr/local/bin/tmux || true
+	rm $(HOME)/.tmux.conf || true
+	sudo rm -r $(HOME)/tmux || true
 
