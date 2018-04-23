@@ -44,3 +44,7 @@ switch (uname)
     case '*'
             echo ERROR: OS not detected.
 end
+
+# direnv
+eval (direnv hook fish)
+
