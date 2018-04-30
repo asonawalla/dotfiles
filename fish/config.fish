@@ -37,10 +37,7 @@ switch (uname)
 						set -x PATH /usr/local/opt/coreutils/libexec/gnubin $PATH
 
 						# these cgo flags point rocksdb to the local installation.
-						set rdb '/Users/asonaw/workspace/src/github.com/facebook/rocksdb'
-						set -x CGO_CFLAGS '-I'$rdb'/include'
-						set -x CGO_LDFLAGS '-L'$rdb' -lrocksdb -lstdc++ -lm -lz -lbz2 -lsnappy'
-						set -x CPATH $rdb'/include'
+            # set -x CGO_LDFLAGS '-lrocksdb -lstdc++ -lm -lz -lbz2 -lsnappy'
     case '*'
             echo ERROR: OS not detected.
 end
