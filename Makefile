@@ -1,6 +1,7 @@
 #!/usr/bin/env make -f
 
-all: vim fish powerline tmux
+all:
+	@echo "Usage: make [ vim | fish | powerline | tmux ]"
 
 ## ALL THE VIM STUFF
 
