@@ -94,6 +94,7 @@ $(FISH_CONFIG_ROOT)/completions/kubectl.fish:
 	ln -s $(CURDIR)/fish/completions/kubectl.fish $(FISH_CONFIG_ROOT)/completions/kubectl.fish
 
 $(FISH_CONFIG_ROOT)/config.fish:
+	mkdir -p $(FISH_CONFIG_ROOT)
 	ln -s $(CURDIR)/fish/config.fish $(HOME)/.config/fish/config.fish
 
 ## ALL THE CLEAN STUFF
