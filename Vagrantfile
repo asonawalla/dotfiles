@@ -64,5 +64,5 @@ Vagrant.configure("2") do |config|
     google.on_host_maintenance = "TERMINATE"
   end
 
-  config.vm.synced_folder ".", "/home/azim/shelf", type: "rsync"
+  config.vm.synced_folder ".", "/home/azim/dotfiles", type: "rsync"
 end
