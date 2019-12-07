@@ -18,12 +18,6 @@ $PROVISION = <<SCRIPT
 set -e
 set -o pipefail
 
-# Install docker and other stuff
-# the docker group needs to exist before install or docker will
-# be installed into the root group
-addgroup --system docker
-usermod -aG docker azim
-snap install docker
 snap install go --classic
 snap install protobuf --classic
 
@@ -34,11 +28,14 @@ apt-get update
 apt-get install --yes \
   automake \
   build-essential \
+  docker.io \
   fish \
   libevent-dev \
   libncurses5-dev \
   pkg-config \
   python
+
+usermod -aG docker azim
 
 SCRIPT
 
