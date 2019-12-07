@@ -56,7 +56,6 @@ $(HOME)/tmux:
 	git clone https://github.com/tmux/tmux.git $(HOME)/tmux
 
 /usr/local/bin/tmux: $(HOME)/tmux
-	(cd $(HOME)/tmux && git checkout 2.7)
 	(cd $(HOME)/tmux/ && ./autogen.sh && ./configure && make && sudo make install)
 
 $(HOME)/.tmux.conf:

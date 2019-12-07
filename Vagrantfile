@@ -23,17 +23,17 @@ snap install protobuf --classic
 
 # ncurses for building vim
 # automake, build-essential, libevent, pkg-config
-# and python for building tmux
+# and bison for building tmux
 apt-get update
 apt-get install --yes \
   automake \
+  bison \
   build-essential \
   docker.io \
   fish \
   libevent-dev \
   libncurses5-dev \
-  pkg-config \
-  python
+  pkg-config
 
 usermod -aG docker azim
 
