@@ -51,7 +51,7 @@ Vagrant.configure("2") do |config|
     override.ssh.private_key_path = $LOCAL_SSH_KEY
 
     # Override provider defaults
-    google.name = "shelf-vagrant"
+    google.name = "vagrant-server"
     google.image_family = "ubuntu-1804-lts"
     google.machine_type = "n1-standard-4"
     google.zone = "us-central1-a"
@@ -65,5 +65,9 @@ Vagrant.configure("2") do |config|
     google.on_host_maintenance = "TERMINATE"
   end
 
-  config.vm.synced_folder ".", "/home/azim/dotfiles", type: "rsync"
+  config.vm.define :devserver do |d|
+    d.vm.synced_folder ".", "/home/azim/dotfiles", type: "rsync"
+    d.ssh.forward_agent = true
+  end
+
 end
