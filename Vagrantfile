@@ -34,6 +34,7 @@ apt-get update
 apt-get install --yes \
   automake \
   build-essential \
+  fish \
   libevent-dev \
   libncurses5-dev \
   pkg-config \
