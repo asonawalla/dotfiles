@@ -57,7 +57,6 @@ Vagrant.configure("2") do |config|
     google.zone = "us-central1-a"
     google.disk_type = "pd-ssd"
     google.disk_size = 10
-    #google.external_ip = false
 
     # Necessary additional variables to set for preemptible VMs
     google.preemptible = true
