@@ -27,6 +27,9 @@ snap install docker
 snap install go --classic
 snap install protobuf --classic
 
+# ncurses for building vim
+# automake, build-essential, libevent, pkg-config
+# and python for building tmux
 apt-get update
 apt-get install --yes \
   automake \
