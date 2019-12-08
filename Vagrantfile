@@ -52,7 +52,7 @@ Vagrant.configure("2") do |config|
     vb.memory = "4096"
   end
 
-  config.vm.define :devserver do |d|
+  config.vm.define "dev-server" do |d|
     d.vm.provision :shell, :inline => $PROVISION
     d.vm.synced_folder ".", "/vagrant/dotfiles", type: "rsync"
     d.ssh.forward_agent = true
