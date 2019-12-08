@@ -5,7 +5,11 @@ clean-shell: #TODO
 
 FISH_CONFIG_ROOT := $(HOME)/.config/fish
 
-fish: $(FISH_CONFIG_ROOT)/config.fish fish-functions fish-completions
+fish: $(FISH_CONFIG_ROOT)/config.fish fish-functions fish-completions /usr/bin/fish
+
+/usr/bin/fish:
+	sudo apt-get install --yes fish
+	chsh -s /usr/bin/fish
 
 fish-functions: $(HOME)/.config/fish/functions/fisher.fish
 
