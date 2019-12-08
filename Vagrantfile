@@ -18,28 +18,12 @@ $PROVISION = <<SCRIPT
 set -e
 set -o pipefail
 
-snap install go --classic
-snap install protobuf --classic
-
-# ncurses for building vim
-# automake, build-essential, libevent, pkg-config
-# and bison for building tmux
-apt-get update
-apt-get install --yes \
-  automake \
-  bison \
-  build-essential \
-  docker.io \
-  fish \
-  libevent-dev \
-  libncurses5-dev \
-  pkg-config
+# only setup build-essential; handle the rest via makefiles in this repo
+apt-get update && apt-get install --yes build-essential
 
 SCRIPT
 
 Vagrant.configure("2") do |config|
-
-  config.vm.provision :shell, :inline => $PROVISION
 
   config.vm.provider :google do |google, override|
     override.vm.box = "google/gce"
@@ -69,6 +53,7 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.define :devserver do |d|
+    d.vm.provision :shell, :inline => $PROVISION
     d.vm.synced_folder ".", "/vagrant/dotfiles", type: "rsync"
     d.ssh.forward_agent = true
   end
