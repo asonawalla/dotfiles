@@ -49,7 +49,7 @@ Vagrant.configure("2") do |config|
   config.vm.provider "virtualbox" do |vb, override|
     override.vm.box = "ubuntu/bionic64"
     vb.gui = false
-    vb.memory = "1024"
+    vb.memory = "4096"
   end
 
   config.vm.define :devserver do |d|
