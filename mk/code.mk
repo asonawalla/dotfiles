@@ -1,7 +1,7 @@
 #!/usr/bin/env make -f
 
-code: vim tmux
-clean-code: clean-vim-config clean-tmux
+code: vim tmux $(HOME)/.gitconfig
+clean-code: clean-vim-config clean-tmux clean-gitconfig
 
 vim: install-vim $(HOME)/.vim/autoload/plug.vim
 
@@ -61,3 +61,9 @@ clean-tmux:
 	sudo rm /usr/local/bin/tmux || true
 	rm $(HOME)/.tmux.conf || true
 	sudo rm -r $(HOME)/tmux || true
+
+$(HOME)/.gitconfig:
+	ln -s $(CURDIR)/.gitconfig $(HOME)/.gitconfig
+
+clean-gitconfig:
+	rm $(HOME)/.gitconfig || true
