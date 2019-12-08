@@ -14,3 +14,11 @@ build: /snap/bin/go /snap/bin/docker /snap/bin/microk8s.status
 /snap/bin/microk8s.status:
 	sudo snap install microk8s --classic
 	sudo usermod -aG microk8s $(USER)
+
+python: $(HOME)/.local/bin/pipenv
+
+/usr/bin/pip3:
+	sudo apt-get install python3-pip
+
+$(HOME)/.local/bin/pipenv: /usr/bin/pip3
+	/usr/bin/pip3 install pipenv
