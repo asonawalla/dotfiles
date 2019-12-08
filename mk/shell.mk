@@ -9,7 +9,7 @@ fish: $(FISH_CONFIG_ROOT)/config.fish fish-functions fish-completions /usr/bin/f
 
 /usr/bin/fish:
 	sudo apt-get install --yes fish
-	chsh -s /usr/bin/fish
+	sudo chsh -s /usr/bin/fish $(USER)
 
 fish-functions: $(HOME)/.config/fish/functions/fisher.fish
 
