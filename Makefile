@@ -5,7 +5,10 @@ all:
 
 ## ALL THE VIM STUFF
 
-vim: /usr/local/bin/vim $(HOME)/.vim/autoload/plug.vim
+vim: install-vim $(HOME)/.vim/autoload/plug.vim
+
+install-vim:
+	@which vim || echo "=> YOU NEED TO INSTALL VIM"
 
 $(HOME)/.vim/autoload/plug.vim: $(HOME)/.vimrc
 	curl -fLo $(HOME)/.vim/autoload/plug.vim --create-dirs \
@@ -49,7 +52,10 @@ $(HOME)/vim:
 
 ## ALL THE TMUX STUFF
 
-tmux: $(HOME)/.tmux.conf /usr/local/bin/tmux
+tmux: $(HOME)/.tmux.conf install-tmux
+
+install-tmux:
+	@which tmux || echo "=> YOU NEED TO INSTALL TMUX"
 
 $(HOME)/tmux:
 	mkdir -p $(HOME)/tmux
