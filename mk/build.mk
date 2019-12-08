@@ -18,7 +18,7 @@ build: /snap/bin/go /snap/bin/docker /snap/bin/microk8s.status
 python: $(HOME)/.local/bin/pipenv
 
 /usr/bin/pip3:
-	sudo apt-get install python3-pip
+	sudo apt-get install --yes python3-pip
 
 $(HOME)/.local/bin/pipenv: /usr/bin/pip3
 	/usr/bin/pip3 install pipenv
