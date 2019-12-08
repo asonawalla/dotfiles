@@ -35,20 +35,18 @@ apt-get install --yes \
   libncurses5-dev \
   pkg-config
 
-usermod -aG docker azim
-
 SCRIPT
 
 Vagrant.configure("2") do |config|
 
-  config.vm.box = "google/gce"
   config.vm.provision :shell, :inline => $PROVISION
 
   config.vm.provider :google do |google, override|
-    google.google_project_id = $GOOGLE_PROJECT_ID
-    google.google_json_key_location = $GOOGLE_JSON_KEY_LOCATION
+    override.vm.box = "google/gce"
     override.ssh.username = $LOCAL_USER
     override.ssh.private_key_path = $LOCAL_SSH_KEY
+    google.google_project_id = $GOOGLE_PROJECT_ID
+    google.google_json_key_location = $GOOGLE_JSON_KEY_LOCATION
 
     # Override provider defaults
     google.name = "vagrant-server"
@@ -64,8 +62,14 @@ Vagrant.configure("2") do |config|
     google.on_host_maintenance = "TERMINATE"
   end
 
+  config.vm.provider "virtualbox" do |vb, override|
+    override.vm.box = "ubuntu/bionic64"
+    vb.gui = false
+    vb.memory = "1024"
+  end
+
   config.vm.define :devserver do |d|
-    d.vm.synced_folder ".", "/home/azim/dotfiles", type: "rsync"
+    d.vm.synced_folder ".", "/vagrant/dotfiles", type: "rsync"
     d.ssh.forward_agent = true
   end
 
