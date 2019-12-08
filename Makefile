@@ -1,7 +1,7 @@
 #!/usr/bin/env make -f
 
 all:
-	@echo "Usage: make [ build | code | shell | python ]
+	@echo "Usage: make [ build | code | shell | python ]"
 
 clean: clean-shell clean-code
 
