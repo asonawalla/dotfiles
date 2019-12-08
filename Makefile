@@ -1,7 +1,6 @@
 #!/usr/bin/env make -f
 
-all:
-	@echo "Usage: make [ shell | code | build ]"
+all: build code shell
 
 clean: clean-shell clean-code
 
