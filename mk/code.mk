@@ -6,7 +6,8 @@ clean-code: clean-vim-config clean-tmux clean-gitconfig
 vim: install-vim $(HOME)/.vim/autoload/plug.vim
 
 install-vim:
-	@which vim || "echo => YOU NEED TO INSTALL VIM && exit 1"
+	@which vim || "echo ==> YOU NEED TO INSTALL VIM"
+	@which vim || exit 1
 
 $(HOME)/.vim/autoload/plug.vim: $(HOME)/.vimrc
 	curl -fLo $(HOME)/.vim/autoload/plug.vim --create-dirs \
@@ -45,7 +46,8 @@ clean-vim-config:
 tmux: $(HOME)/.tmux.conf install-tmux
 
 install-tmux:
-	@which tmux || "echo => YOU NEED TO INSTALL TMUX && exit 1"
+	@which tmux || echo "==> YOU NEED TO INSTALL TMUX"
+	@which tmux || exit 1
 
 $(HOME)/tmux:
 	mkdir -p $(HOME)/tmux
