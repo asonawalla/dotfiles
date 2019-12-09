@@ -5,8 +5,5 @@ set -x PATH $PATH /snap/bin
 set -x GOPATH $HOME/go
 set -x PATH $PATH $GOPATH/bin
 
-# kubectl environment setup
-alias kubectl='microk8s.kubectl'
-
 # pip environment setup
 set -x PATH $PATH $HOME/.local/bin
