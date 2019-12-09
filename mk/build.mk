@@ -16,7 +16,7 @@ build: /snap/bin/go /snap/bin/docker /snap/bin/microk8s.status
 	sudo usermod -aG microk8s $(USER)
 	sudo snap install kubectl --classic
 	mkdir -p $(HOME)/.kube
-	microk8s.config >> $(HOME)/.kube/config
+	echo "microk8s.config >> $(HOME)/.kube/config" | newgrp microk8s
 
 python: $(HOME)/.local/bin/pipenv
 
