@@ -12,6 +12,8 @@ call plug#begin('~/.vim/plugged')
 " Language tools
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
   let g:go_fmt_command="goimports"
+  let g:go_def_mode='gopls'
+  let g:go_info_mode='gopls'
 
 Plug 'uarun/vim-protobuf'
 
@@ -22,6 +24,8 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'dag/vim-fish'
 
 Plug 'solarnz/thrift.vim'
+
+Plug 'ycm-core/YouCompleteMe', { 'dir': '~/.vim/bundle/YouCompleteMe', 'do': './install.py --all' }
 
 " VCS Tools
 Plug 'tpope/vim-fugitive'
