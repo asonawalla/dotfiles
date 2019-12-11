@@ -3,11 +3,7 @@
 code: vim tmux $(HOME)/.gitconfig
 clean-code: clean-vim-config clean-tmux clean-gitconfig
 
-vim: install-vim $(HOME)/.vim/autoload/plug.vim
-
-install-vim:
-	@which vim || "echo ==> YOU NEED TO INSTALL VIM"
-	@which vim || exit 1
+vim: /usr/local/bin/vim $(HOME)/.vim/autoload/plug.vim
 
 $(HOME)/.vim/autoload/plug.vim: $(HOME)/.vimrc
 	curl -fLo $(HOME)/.vim/autoload/plug.vim --create-dirs \
@@ -25,7 +21,7 @@ $(HOME)/.vimrc: $(CURDIR)/vimrc
 		--with-features=huge \
 		--enable-multibyte \
 		--enable-rubyinterp=yes \
-		--enable-pythoninterp=yes \
+		--enable-pythoninterp=no \
 		--enable-python3interp=yes \
 		--enable-perlinterp=yes \
 		--enable-luainterp=yes \
