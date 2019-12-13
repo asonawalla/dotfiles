@@ -46,7 +46,7 @@ call plug#end()
 syntax enable
 set t_Co=256
 set background=dark
-colorscheme desert
+colorscheme peachpuff
 
 set mouse=a
 set hlsearch
