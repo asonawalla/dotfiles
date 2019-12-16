@@ -18,8 +18,7 @@ $PROVISION = <<SCRIPT
 set -e
 set -o pipefail
 
-# only setup build-essential; handle the rest via makefiles in this repo
-apt-get update && apt-get install --yes build-essential
+apt-get update && apt-get install --yes build-essential libncurses5-dev
 
 SCRIPT
 
