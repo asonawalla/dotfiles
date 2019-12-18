@@ -2,6 +2,8 @@
 
 code: vim tmux $(HOME)/.gitconfig
 clean-code: clean-vim-config clean-tmux clean-gitconfig
+VIM_VERSION = 8.2.0
+VIMDIR := "$(HOME)/vim-$(VIM_VERSION)"
 
 vim: /usr/local/bin/vim $(HOME)/.vim/autoload/plug.vim
 
@@ -15,9 +17,9 @@ vim-config: $(HOME)/.vim/autoload/plug.vim
 $(HOME)/.vimrc: $(CURDIR)/vimrc
 	@ln -s $(CURDIR)/vimrc $(HOME)/.vimrc
 
-/usr/local/bin/vim: $(HOME)/vim
-	(cd $(HOME)/vim && sudo make uninstall && sudo make clean)
-	(cd $(HOME)/vim && ./configure \
+/usr/local/bin/vim: $(VIMDIR)
+	(cd $(VIMDIR) && sudo make uninstall && sudo make clean)
+	(cd $(VIMDIR) && ./configure \
 		--with-features=huge \
 		--enable-multibyte \
 		--enable-rubyinterp=yes \
@@ -26,14 +28,15 @@ $(HOME)/.vimrc: $(CURDIR)/vimrc
 		--enable-perlinterp=yes \
 		--enable-luainterp=yes \
 		--enable-gui=gtk2 --enable-cscope --prefix=/usr/local)
-	(cd $(HOME)/vim && make)
-	(cd $(HOME)/vim && sudo make install)
+	(cd $(VIMDIR) && make)
+	(cd $(VIMDIR) && sudo make install)
 
-$(HOME)/vim:
-	git clone https://github.com/vim/vim $(HOME)/vim
+$(VIMDIR):
+	(cd $(HOME) && wget -O vim.tar.gz https://github.com/vim/vim/archive/v$(VIM_VERSION).tar.gz)
+	(cd $(HOME) && tar -xvzf vim.tar.gz)
 
 clean-vim:
-	(cd $(HOME)/vim && sudo make uninstall && make clean)
+	(cd $(VIMDIR) && sudo make uninstall && make clean)
 
 clean-vim-config:
 	sudo rm -r $(HOME)/.vim || true
