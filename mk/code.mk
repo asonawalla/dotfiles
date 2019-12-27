@@ -5,17 +5,19 @@ clean-code: clean-vim-config clean-tmux clean-gitconfig
 VIM_VERSION = 8.2.0
 VIMDIR := "$(HOME)/vim-$(VIM_VERSION)"
 
-vim: /usr/local/bin/vim $(HOME)/.vim/autoload/plug.vim
+.PHONY: vim
+vim: $(HOME)/.vim/autoload/plug.vim
 
 $(HOME)/.vim/autoload/plug.vim: $(HOME)/.vimrc
 	curl -fLo $(HOME)/.vim/autoload/plug.vim --create-dirs \
 		     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	@vim +PlugInstall +qall
 
-vim-config: $(HOME)/.vim/autoload/plug.vim
-
 $(HOME)/.vimrc: $(CURDIR)/vimrc
 	@ln -s $(CURDIR)/vimrc $(HOME)/.vimrc
+
+.PHONY: compile-vim
+compile-vim: /usr/local/bin/vim
 
 /usr/local/bin/vim: $(VIMDIR)
 	(cd $(VIMDIR) && sudo make uninstall && sudo make clean)
@@ -23,13 +25,12 @@ $(HOME)/.vimrc: $(CURDIR)/vimrc
 		--with-features=huge \
 		--enable-multibyte \
 		--enable-rubyinterp=yes \
-		--enable-pythoninterp=no \
 		--enable-python3interp=yes \
+		--with-python3-config-dir=$(python3-config --configdir) \
 		--enable-perlinterp=yes \
 		--enable-luainterp=yes \
 		--enable-gui=gtk2 --enable-cscope --prefix=/usr/local)
-	(cd $(VIMDIR) && make)
-	(cd $(VIMDIR) && sudo make install)
+	(cd $(VIMDIR) && sudo make VIMRUNTIMEDIR=/usr/local/share/vim/vim82 )
 
 $(VIMDIR):
 	(cd $(HOME) && wget -O vim.tar.gz https://github.com/vim/vim/archive/v$(VIM_VERSION).tar.gz)

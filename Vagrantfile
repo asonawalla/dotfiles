@@ -18,7 +18,12 @@ $PROVISION = <<SCRIPT
 set -e
 set -o pipefail
 
-apt-get update && apt-get install --yes build-essential libncurses5-dev
+# python2 is only needed to install youcompleteme
+apt-get update && apt-get install --yes \
+  build-essential \
+  cmake \
+  python-dev \
+  vim-gtk3
 
 SCRIPT
 
