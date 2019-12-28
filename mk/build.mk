@@ -1,15 +1,14 @@
 #!/usr/bin/env make -f
 
-build: /snap/bin/go /snap/bin/docker /snap/bin/microk8s.status /usr/local/bin/tilt
+build: /snap/bin/go /usr/bin/docker /snap/bin/microk8s.status /usr/local/bin/tilt
 
 /snap/bin/go:
 	sudo snap install go --classic
 	vim +GoInstallBinaries +qall
 
-/snap/bin/docker:
-	sudo addgroup --system docker
-	sudo adduser $(USER) docker
-	echo sudo snap install docker | newgrp docker
+/usr/bin/docker:
+	sudo apt-get install -y docker.io
+	sudo usermod -aG docker $(USER)
 	gcloud auth print-access-token | docker login -u oauth2accesstoken --password-stdin https://gcr.io
 
 /snap/bin/microk8s.status:
