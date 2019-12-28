@@ -10,6 +10,7 @@ build: /snap/bin/go /snap/bin/docker /snap/bin/microk8s.status /usr/local/bin/ti
 	sudo addgroup --system docker
 	sudo adduser $(USER) docker
 	echo sudo snap install docker | newgrp docker
+	gcloud auth print-access-token | docker login -u oauth2accesstoken --password-stdin https://gcr.io
 
 /snap/bin/microk8s.status:
 	sudo snap install microk8s --classic
