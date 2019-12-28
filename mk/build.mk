@@ -1,6 +1,6 @@
 #!/usr/bin/env make -f
 
-build: /snap/bin/go /snap/bin/docker /snap/bin/microk8s.status
+build: /snap/bin/go /snap/bin/docker /snap/bin/microk8s.status /usr/local/bin/tilt
 
 /snap/bin/go:
 	sudo snap install go --classic
@@ -25,3 +25,6 @@ python: $(HOME)/.local/bin/pipenv
 
 $(HOME)/.local/bin/pipenv: /usr/bin/pip3
 	/usr/bin/pip3 install pipenv
+
+/usr/local/bin/tilt:
+	curl -fsSL https://raw.githubusercontent.com/windmilleng/tilt/master/scripts/install.sh | bash
