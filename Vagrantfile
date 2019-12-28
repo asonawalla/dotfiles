@@ -9,6 +9,7 @@
 # Customize these global variables
 $GOOGLE_PROJECT_ID = "azim-personal"
 $GOOGLE_JSON_KEY_LOCATION = "~/azim-personal-key.json"
+$GOOGLE_SERVICE_ACCOUNT = "681799037982-compute@developer.gserviceaccount.com"
 $LOCAL_USER = "azim"
 $LOCAL_SSH_KEY = "~/.ssh/google_compute_engine"
 
@@ -35,6 +36,8 @@ Vagrant.configure("2") do |config|
     override.ssh.private_key_path = $LOCAL_SSH_KEY
     google.google_project_id = $GOOGLE_PROJECT_ID
     google.google_json_key_location = $GOOGLE_JSON_KEY_LOCATION
+    google.service_account = $GOOGLE_SERVICE_ACCOUNT
+    google.scopes = ['https://www.googleapis.com/auth/cloud-platform']
 
     # Override provider defaults
     google.name = "vagrant-server"
