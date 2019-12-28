@@ -9,7 +9,7 @@ build: /snap/bin/go /usr/bin/docker /snap/bin/microk8s.status /usr/local/bin/til
 /usr/bin/docker:
 	sudo apt-get install -y docker.io
 	sudo usermod -aG docker $(USER)
-	gcloud auth print-access-token | docker login -u oauth2accesstoken --password-stdin https://gcr.io
+	echo 'gcloud auth print-access-token | docker login -u oauth2accesstoken --password-stdin https://gcr.io' | newgrp docker
 
 /snap/bin/microk8s.status:
 	sudo snap install microk8s --classic
