@@ -45,7 +45,7 @@ Vagrant.configure("2") do |config|
     google.machine_type = "n1-standard-4"
     google.zone = "us-central1-a"
     google.disk_type = "pd-ssd"
-    google.disk_size = 10
+    google.disk_size = 20
 
     # Necessary additional variables to set for preemptible VMs
     google.preemptible = true
