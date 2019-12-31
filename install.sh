@@ -66,6 +66,13 @@ main() {
 	    curl -fsSL https://raw.githubusercontent.com/windmilleng/tilt/master/scripts/install.sh | bash
     }
     if_absent tilt install_tilt
+
+    install_helm() {
+        wget -O helm https://get.helm.sh/helm-v3.0.2-linux-amd64.tar.gz
+        chmod +x helm
+        sudo mv helm /usr/local/bin
+    }
+    if_absent helm install_helm
 }
 
 main "$@"
