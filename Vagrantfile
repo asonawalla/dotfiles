@@ -15,17 +15,7 @@ $LOCAL_SSH_KEY = "~/.ssh/google_compute_engine"
 
 $PROVISION = <<SCRIPT
 #!/bin/bash
-
-set -e
-set -o pipefail
-
-# python2 is only needed to install youcompleteme
-apt-get update && apt-get install --yes \
-  build-essential \
-  cmake \
-  python-dev \
-  vim-gtk3
-
+# Pass for now
 SCRIPT
 
 Vagrant.configure("2") do |config|

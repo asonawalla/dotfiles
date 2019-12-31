@@ -25,7 +25,7 @@ Plug 'dag/vim-fish'
 
 Plug 'solarnz/thrift.vim'
 
-Plug 'ycm-core/YouCompleteMe', { 'dir': '~/.vim/bundle/YouCompleteMe', 'do': './install.py --all' }
+" Plug 'ycm-core/YouCompleteMe', { 'dir': '~/.vim/bundle/YouCompleteMe', 'do': './install.py --all' }
 
 " VCS Tools
 Plug 'tpope/vim-fugitive'
