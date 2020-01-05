@@ -47,10 +47,14 @@ main() {
     }
     if_absent docker install_docker
 
+    install_kubectl() {
+        sudo snap install kubectl --classic
+    }
+    if_absent kubectl install_kubectl
+
     install_microk8s() {
         sudo snap install microk8s --classic
         sudo usermod -aG microk8s "${USER}"
-        sudo snap install kubectl --classic
         mkdir -p "${HOME}"/.kube
         echo "microk8s.config >> ${HOME}/.kube/config" | newgrp microk8s
     }
