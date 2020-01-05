@@ -32,7 +32,7 @@ Vagrant.configure("2") do |config|
     # Override provider defaults
     google.name = "vagrant-server"
     google.image_family = "ubuntu-1804-lts"
-    google.machine_type = "n1-standard-4"
+    google.machine_type = "e2-standard-4"
     google.zone = "us-central1-a"
     google.disk_type = "pd-ssd"
     google.disk_size = 20
