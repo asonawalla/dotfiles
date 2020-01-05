@@ -53,7 +53,8 @@ main() {
     if_absent kubectl install_kubectl
 
     install_microk8s() {
-        sudo snap install microk8s --classic
+        # kubernetes 1.15 is the latest available on GKE at time of writing
+        sudo snap install microk8s --classic --channel 1.15/stable
         sudo usermod -aG microk8s "${USER}"
         mkdir -p "${HOME}"/.kube
         echo "microk8s.config >> ${HOME}/.kube/config" | newgrp microk8s
