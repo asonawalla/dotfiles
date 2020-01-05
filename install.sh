@@ -72,9 +72,11 @@ main() {
     if_absent tilt install_tilt
 
     install_helm() {
-        wget -O helm https://get.helm.sh/helm-v3.0.2-linux-amd64.tar.gz
-        chmod +x helm
-        sudo mv helm /usr/local/bin
+        git clone https://github.com/helm/helm ${HOME}/code/helm
+        cd ${HOME}/code/helm
+        git checkout v3.0.2
+        go install -v ./cmd/...
+        helm repo add stable https://kubernetes-charts.storage.googleapis.com/
     }
     if_absent helm install_helm
 }
