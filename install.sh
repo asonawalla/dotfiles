@@ -83,7 +83,7 @@ main() {
         cd ${HOME}/code/helm
         git checkout v3.0.2
         go install -v ./cmd/...
-        helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+        ${HOME}/go/bin/helm repo add stable https://kubernetes-charts.storage.googleapis.com/
     }
     if_absent helm install_helm
 }
