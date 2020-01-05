@@ -71,6 +71,13 @@ main() {
     }
     if_absent tilt install_tilt
 
+    install_skaffold() {
+        wget -O skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64
+        chmod +x skaffold
+        sudo mv skaffold /usr/local/bin
+    }
+    if_absent skaffold install_skaffold
+
     install_helm() {
         git clone https://github.com/helm/helm ${HOME}/code/helm
         cd ${HOME}/code/helm
