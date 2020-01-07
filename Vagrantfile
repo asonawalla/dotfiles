@@ -30,7 +30,7 @@ Vagrant.configure("2") do |config|
     google.scopes = ['https://www.googleapis.com/auth/cloud-platform']
 
     # Override provider defaults
-    google.name = "vagrant-server"
+    google.name = "dev-server"
     google.image_family = "ubuntu-1804-lts"
     google.machine_type = "e2-standard-4"
     google.zone = "us-central1-a"
@@ -51,7 +51,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.define "dev-server" do |d|
     d.vm.provision :shell, :inline => $PROVISION
-    d.vm.synced_folder ".", "/vagrant/dotfiles", type: "rsync"
+    d.vm.synced_folder ".", "/home/azim/dotfiles", type: "rsync"
     d.ssh.forward_agent = true
   end
 
