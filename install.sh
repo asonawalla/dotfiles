@@ -70,14 +70,14 @@ main() {
     install_tilt() {
 	    curl -fsSL https://raw.githubusercontent.com/windmilleng/tilt/master/scripts/install.sh | bash
     }
-    if_absent tilt install_tilt
+    #if_absent tilt install_tilt
 
     install_skaffold() {
         wget -O skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64
         chmod +x skaffold
         sudo mv skaffold /usr/local/bin
     }
-    if_absent skaffold install_skaffold
+    #if_absent skaffold install_skaffold
 
     install_helm() {
         git clone https://github.com/helm/helm ${HOME}/code/helm
@@ -86,7 +86,7 @@ main() {
         go install -v ./cmd/...
         ${HOME}/go/bin/helm repo add stable https://kubernetes-charts.storage.googleapis.com/
     }
-    if_absent helm install_helm
+    #if_absent helm install_helm
 }
 
 main "$@"
