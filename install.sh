@@ -87,6 +87,11 @@ main() {
         ${HOME}/go/bin/helm repo add stable https://kubernetes-charts.storage.googleapis.com/
     }
     #if_absent helm install_helm
+
+    install_protoc() {
+        sudo apt-get install --yes protobuf-compiler
+    }
+    if_absent protoc install_protoc
 }
 
 main "$@"
