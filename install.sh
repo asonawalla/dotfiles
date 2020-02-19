@@ -25,6 +25,16 @@ main() {
     }
     if_absent make install_make
 
+    install_cmake() {
+      sudo apt-get install --yes cmake
+    }
+    if_absent cmake install_cmake
+
+    install_python3_dev() {
+      sudo apt-get install --yes python3-dev
+    }
+    if_absent python3-config install_python3_dev
+
     install_fish() {
         sudo apt-get install --yes fish
 	    sudo chsh -s /usr/bin/fish "${USER}"
