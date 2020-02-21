@@ -43,11 +43,13 @@ Plug 'bradens/vim-iterm2-navigator'
 
 call plug#end()
 
+" Make stuff look pretty
 syntax enable
 set t_Co=256
 set background=dark
 colorscheme peachpuff
 
+" TODO: what do each of these settings do?
 set mouse=a
 set hlsearch
 set incsearch
@@ -57,6 +59,7 @@ set noswapfile
 set tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
 set backspace=indent,eol,start
 
+" TODO: what does this do?
 set completeopt=longest,menuone,preview
 
 " Show line numbers and make them grey
@@ -72,4 +75,9 @@ map <C-n> :NERDTreeToggle<CR>
 
 " Avoid the conflict on c-c in sql files
 let g:omni_sql_no_default_maps=1
+
+" Some bare bones snippets
+nnoremap ,deployment :read $HOME/.vim/snippets/deployment.yaml<CR>
+nnoremap ,pod :read $HOME/.vim/snippets/pod.yaml<CR>
+nnoremap ,service :read $HOME/.vim/snippets/service.yaml<CR>
 

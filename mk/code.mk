@@ -13,8 +13,10 @@ $(HOME)/.vim/autoload/plug.vim: $(HOME)/.vimrc
 		     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	@vim +PlugInstall +qall
 
-$(HOME)/.vimrc: $(CURDIR)/vimrc
-	@ln -s $(CURDIR)/vimrc $(HOME)/.vimrc
+$(HOME)/.vimrc: $(CURDIR)/vimrc $(CURDIR)/snippets
+	@ln -s $(CURDIR)/vimrc $(HOME)/.vimrc || echo "WARNING: .vimrc link failed"
+	@mkdir -p $(HOME)/.vim
+	@ln -s $(CURDIR)/snippets $(HOME)/.vim/snippets || echo "WARNING: snippets link failed"
 
 .PHONY: compile-vim
 compile-vim: /usr/local/bin/vim
@@ -57,7 +59,7 @@ $(HOME)/tmux:
 	(cd $(HOME)/tmux/ && ./autogen.sh && ./configure && make && sudo make install)
 
 $(HOME)/.tmux.conf:
-	ln -s $(CURDIR)/tmux.conf $(HOME)/.tmux.conf
+	ln -s $(CURDIR)/tmux.conf $(HOME)/.tmux.conf || echo "WARNING: .tmux.conf link failed"
 
 clean-tmux:
 	sudo rm /usr/local/bin/tmux || true
