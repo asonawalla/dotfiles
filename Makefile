@@ -1,10 +1,9 @@
 #!/usr/bin/env make -f
 
-all:
-	@echo "Usage: make [ build | code | shell | python ]"
+all: help
 
-clean: clean-shell clean-code
+include $(wildcard mk/*.mk)
 
-include mk/shell.mk
-include mk/code.mk
-include mk/build.mk
+help: ## Prints help for targets with comments
+	@cat $(MAKEFILE_LIST) | grep -E '^[a-zA-Z_-]+:.*?## .*$$' | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
+
