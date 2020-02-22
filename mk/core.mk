@@ -25,6 +25,8 @@ $(HOME)/.gitconfig:
 	sudo apt-get install --yes python3-dev
 
 /usr/bin/fish:
+	sudo apt-add-repository --yes ppa:fish-shell/release-3
+	sudo apt-get update
 	sudo apt-get install --yes fish
 	sudo chsh -s /usr/bin/fish "$(USER)"
 	mkdir -p ~/.config/fish
