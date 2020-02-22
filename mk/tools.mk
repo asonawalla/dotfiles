@@ -9,7 +9,7 @@ tools-targets = \
 .PHONY: tools
 tools: core $(tools-targets) ## misc tools
 
-/usr/bin/protoc: apt-update
+/usr/bin/protoc:
 	sudo apt-get install --yes protobuf-compiler
 
 $(HOME)/go/bin/helm: /snap/bin/go $(HOME)/code/helm
@@ -20,5 +20,5 @@ $(HOME)/go/bin/helm: /snap/bin/go $(HOME)/code/helm
 $(HOME)/code/helm:
 	git clone https://github.com/helm/helm $(HOME)/code/helm
 
-/usr/bin/tig: apt-update
+/usr/bin/tig:
 	sudo apt-get install --yes tig

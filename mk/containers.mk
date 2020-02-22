@@ -9,7 +9,7 @@ containers-targets = \
 .PHONY: containers
 containers: core $(containers-targets) ## Container development tools (docker, kubernetes)
 
-/usr/bin/docker: apt-update
+/usr/bin/docker:
 	sudo apt-get install -y docker.io
 	sudo usermod -aG docker $(USER)
 	echo 'gcloud auth print-access-token | docker login -u oauth2accesstoken --password-stdin https://gcr.io' | newgrp docker

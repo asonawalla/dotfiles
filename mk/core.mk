@@ -12,10 +12,6 @@ core-targets = \
 .PHONY: core
 core: $(core-targets) ## Core development environment tools
 
-.PHONY: apt-update
-apt-update:
-	sudo apt-get update
-
 $(HOME)/.tmux.conf:
 	@ln -s $(CURDIR)/tmux.conf $(HOME)/.tmux.conf || echo "WARNING: .tmux.conf link failed"
 
