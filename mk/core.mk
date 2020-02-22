@@ -6,7 +6,8 @@ core-targets = \
 	$(HOME)/.gitconfig \
 	/usr/bin/cmake \
 	/usr/bin/python3-config \
-	/usr/bin/fish
+	/usr/bin/fish \
+	/snap/bin/go
 
 .PHONY: core
 core: $(core-targets) ## Core development environment tools
@@ -29,3 +30,5 @@ $(HOME)/.gitconfig:
 	mkdir -p ~/.config/fish
 	cp ./fish/config.fish  ~/.config/fish/
 
+/snap/bin/go:
+	sudo snap install go --classic
