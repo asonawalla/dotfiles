@@ -1,15 +1,15 @@
 #!/usr/bin/env make -f
 
-.PHONY: core
-core: $(core-targets) ## Core development environment tools
-
 .PHONY: core-targets
-core-targets := \
+core-targets = \
 	$(HOME).tmux.conf \
 	$(HOME)/.gitconfig \
 	/usr/bin/cmake \
 	/usr/bin/python3-config \
 	/usr/bin/fish
+
+.PHONY: core
+core: $(core-targets) ## Core development environment tools
 
 $(HOME)/.tmux.conf:
 	@ln -s $(CURDIR)/tmux.conf $(HOME)/.tmux.conf || echo "WARNING: .tmux.conf link failed"

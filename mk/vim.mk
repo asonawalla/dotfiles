@@ -1,11 +1,11 @@
 #!/usr/bin/env make -f
 
+.PHONY: editor-targets
+editor-targets = \
+	$(HOME)/.vim/autoload/plug.vim
+
 .PHONY: editor
 editor: core $(editor-targets) ## ViM configuration and plugins
-
-.PHONY: editor-targets
-editor-targets: \
-	$(HOME)/.vim/autoload/plug.vim
 
 $(HOME)/.vim/autoload/plug.vim: $(HOME)/.vimrc
 	curl -fLo $(HOME)/.vim/autoload/plug.vim --create-dirs \
