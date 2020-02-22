@@ -2,7 +2,7 @@
 
 .PHONY: core-targets
 core-targets = \
-	$(HOME).tmux.conf \
+	$(HOME)/.tmux.conf \
 	$(HOME)/.gitconfig \
 	/usr/bin/cmake \
 	/usr/bin/python3-config \
