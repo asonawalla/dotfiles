@@ -13,9 +13,15 @@ $GOOGLE_SERVICE_ACCOUNT = "681799037982-compute@developer.gserviceaccount.com"
 $LOCAL_USER = "azim"
 $LOCAL_SSH_KEY = "~/.ssh/google_compute_engine"
 
+# The provision script just installs make
 $PROVISION = <<SCRIPT
 #!/bin/bash
-# Pass for now
+
+set -e
+
+apt-get update
+apt-get install --yes build-essential
+
 SCRIPT
 
 Vagrant.configure("2") do |config|
