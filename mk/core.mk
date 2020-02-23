@@ -30,7 +30,7 @@ $(HOME)/.gitconfig:
 	sudo apt-get install --yes fish
 	sudo chsh -s /usr/bin/fish "$(USER)"
 	mkdir -p ~/.config/fish
-	cp ./fish/config.fish  ~/.config/fish/
+	cp ./config.fish  ~/.config/fish/
 
 /snap/bin/go:
 	sudo snap install go --classic
