@@ -11,7 +11,7 @@ $GOOGLE_PROJECT_ID = "azim-personal"
 $GOOGLE_JSON_KEY_LOCATION = "~/azim-personal-key.json"
 $GOOGLE_SERVICE_ACCOUNT = "681799037982-compute@developer.gserviceaccount.com"
 $LOCAL_USER = "azim"
-$LOCAL_SSH_KEY = "~/.ssh/id_rsa"
+$LOCAL_SSH_KEY = "~/.ssh/google_compute_engine"
 
 # The provision script just installs make
 $PROVISION = <<SCRIPT
