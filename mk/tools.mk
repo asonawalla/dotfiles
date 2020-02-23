@@ -4,7 +4,9 @@
 tools-targets = \
 	/usr/bin/protoc \
 	$(HOME)/go/bin/helm \
-	/usr/bin/tig
+	/usr/bin/tig \
+	$(HOME)/.local/bin/kubectx \
+	$(HOME)/.local/bin/kubens
 
 .PHONY: tools
 tools: core $(tools-targets) ## misc tools
@@ -22,3 +24,13 @@ $(HOME)/code/helm:
 
 /usr/bin/tig:
 	sudo apt-get install --yes tig
+
+$(HOME)/.local/bin/kubectx:
+	mkdir -p $(HOME)/.local/bin
+	wget -O $(HOME)/.local/bin/kubectx https://raw.githubusercontent.com/ahmetb/kubectx/master/kubectx
+	chmod +x $(HOME)/.local/bin/kubectx
+
+$(HOME)/.local/bin/kubens:
+	mkdir -p $(HOME)/.local/bin
+	wget -O $(HOME)/.local/bin/kubens https://raw.githubusercontent.com/ahmetb/kubectx/master/kubens
+	chmod +x $(HOME)/.local/bin/kubens
