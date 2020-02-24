@@ -14,8 +14,10 @@ tools: core $(tools-targets) ## misc tools
 /usr/bin/protoc:
 	sudo apt-get install --yes protobuf-compiler
 
+HELM_VERSION=3.1.1
+
 $(HOME)/go/bin/helm: /snap/bin/go $(HOME)/code/helm
-	(cd $(HOME)/code/helm && git checkout v3.0.2 && go install -v ./cmd/...)
+	(cd $(HOME)/code/helm && git checkout v$(HELM_VERSION) && go install -v ./cmd/...)
 	$(HOME)/go/bin/helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 	$(HOME)/go/bin/helm repo update
 
