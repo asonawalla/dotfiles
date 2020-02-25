@@ -36,3 +36,11 @@ $(HOME)/.local/bin/kubens:
 	mkdir -p $(HOME)/.local/bin
 	wget -O $(HOME)/.local/bin/kubens https://raw.githubusercontent.com/ahmetb/kubectx/master/kubens
 	chmod +x $(HOME)/.local/bin/kubens
+
+.PHONY: bazel
+bazel: /usr/bin/bazel
+
+/usr/bin/bazel:
+	curl https://bazel.build/bazel-release.pub.gpg | sudo apt-key add -
+	echo "deb [arch=amd64] https://storage.googleapis.com/bazel-apt stable jdk1.8" | sudo tee /etc/apt/sources.list.d/bazel.list
+	sudo apt-get update && sudo apt-get install --yes bazel
