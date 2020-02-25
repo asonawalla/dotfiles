@@ -15,5 +15,5 @@ $(HOME)/.vim/autoload/plug.vim: $(HOME)/.vimrc
 $(HOME)/.vimrc: $(CURDIR)/vimrc $(CURDIR)/snippets
 	@ln -s $(CURDIR)/vimrc $(HOME)/.vimrc || echo "WARNING: .vimrc link failed"
 	@mkdir -p $(HOME)/.vim
-	@ln -s $(CURDIR)/snippets $(HOME)/.vim/snippets || echo "WARNING: snippets link failed"
+	@ln -s $(CURDIR)/snippets $(HOME)/.vim/UltiSnips || echo "WARNING: snippets link failed"
 
